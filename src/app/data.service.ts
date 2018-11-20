@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import {Task} from '../models/task';
 @Injectable({
   providedIn: 'root'
 })
@@ -7,7 +7,7 @@ export class DataService {//share dta to other page
 
   constructor() { }
   //method to store data
-  storeList(list:Array<string>){//list:array<string> is argument
+  storeList(list:Array<Task>){//list:array<string> is argument
     return new Promise((resolve,reject)=>{
       let data =JSON.stringify( list );//local storage only accept stringify
       try{

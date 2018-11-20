@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {DataService} from '../data.service';
+import {Task} from '../../models/task';
 
 @Component({
   selector: 'app-home',
@@ -7,18 +8,23 @@ import {DataService} from '../data.service';
   styleUrls: ['home.page.scss']
 })
 export class HomePage {
-  newfruit:string;
+  taskInput:string;
   title:string = 'App Home Page';
-  fruits:Array<string> = ['mango','papayas','bananas'];
+  tasks:Array<Task> = [];
   constructor(public dataService:DataService){
     this.readTask();//when hompage load its run this function
   }
+  createTask(taskName:string){
+    let taskDate:number=new Date().getTime();
+    let task={name: taskName, date:taskDate, status:false};
+    return task;
+  }
 
-  addFruit(){
-    if(this.newfruit.length>0){
-      this.fruits.push(this.newfruit);
-      this.newfruit="";
-      this.dataService.storeList(this.fruits)
+  addTask(){
+    if(this.taskInput.length>0){
+      this.tasks.push(this.createTask(this.taskInput));
+      this.taskInput="";
+      this.dataService.storeList(this.tasks)
       .then((response)=>{
         //successs
       })
@@ -32,7 +38,7 @@ export class HomePage {
     this.dataService.loadList()
     .then((response)=>{
       if(response!==null){
-        this.fruits=<Array<string>>response;
+        this.tasks=<Array<Task>>response;
       }
     })
     .catch((error)=>{

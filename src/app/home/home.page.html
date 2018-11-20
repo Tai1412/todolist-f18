@@ -9,11 +9,13 @@
   <ion-list>
     <ion-item>
       <ion-label position="floating">Add a fruit name</ion-label>
-      <ion-input type="text" [(ngModel)]="newfruit"></ion-input>
+      <ion-input type="text" [(ngModel)]="taskInput"></ion-input>
     </ion-item>
-      <ion-button size="large" ion-button color="primary" fill="outline"(click)="addFruit()">Add</ion-button>
+      <ion-button size="large" ion-button color="primary" fill="outline"(click)="addTask()">Add</ion-button>
   </ion-list>
-  <h3 *ngFor="let fruit of fruits">
-    {{fruit}}
+  <h3 *ngFor="let task of tasks">
+    {{task.name}} <br>
+    {{task.date}} <br>
+    
    </h3>
 </ion-content>
