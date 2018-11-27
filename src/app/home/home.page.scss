@@ -2,3 +2,13 @@ app-home{
   background-color: lightblue;
   color:red;
 }
+ ion-item.task{
+   --background:lightblue;
+   --padding-top:20px;
+ }
+ ion-item.task.done{
+   --background:green;
+ }
+ ion-item h2.name{
+    font-weight:600;
+ }
