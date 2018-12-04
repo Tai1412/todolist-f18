@@ -36,6 +36,6 @@ export class DataService {//share dta to other page
       else{
         reject(null);
       }
-    })
+    });
   }
 }
