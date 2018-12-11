@@ -19,3 +19,14 @@ ion-row.done{
 ion-item h2.name{
   font-weight: 400;
 }
+ion-item{
+  ion-checkbox{
+    button{
+      width:60%;
+    }
+  }
+  ion-button{
+    position: relative;
+    z-index:999999;
+  }
+}
