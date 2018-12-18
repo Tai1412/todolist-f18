@@ -12,7 +12,23 @@
     </ion-button>
   </form>
   <ion-list>
-    <ion-item *ngFor="let task of tasks" (click)="changeStatus(task.date)" [class.done]="task.status" class="task">
+    <ion-item *ngIf="!tasks.length">
+      No task
+    </ion-item>
+
+    <ion-item-sliding *ngFor="let task of tasks" (click)="changeStatus(task.date)" [class.done]="task.status">
+      <ion-item>
+        <ion-label>
+          <h2>{{task.name}}</h2>
+          <p>{{formatDate(task.date)}}</p>
+        </ion-label>
+        <ion-checkbox slot="end" [checked]="task.status"></ion-checkbox>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="deleteItem(task.date)">Delete</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+    <!-- <ion-item *ngFor="let task of tasks" (click)="changeStatus(task.date)" [class.done]="task.status" class="task">
       <ion-checkbox slot="start" [checked]="task.status"> </ion-checkbox>
       <ion-label>
         <ion-text>{{task.name}}</ion-text>
@@ -21,6 +37,11 @@
       <ion-button *ngIf="task.status" fill="clear" (click)="deleteItem(task.date)">
         <ion-icon name="close"> </ion-icon>
       </ion-button>
-    </ion-item>
+    </ion-item> -->
   </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+   <ion-fab-button href="/tabs/(list:list)" >
+     <ion-icon name="add"></ion-icon>
+   </ion-fab-button>
+ </ion-fab>
 </ion-content>

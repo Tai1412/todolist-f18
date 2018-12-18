@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-list',
@@ -11,5 +12,6 @@ export class ListPage implements OnInit {
 
   ngOnInit() {
   }
+  title:string = 'Add new task';
 
 }

@@ -1,9 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>list</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
+  <form id="task-form" (submit)="addTask()" (keyup.enter)="addTask()">
+    <ion-input type="text" placeholder="add a task" [(ngModel)]="taskInput" name="task-input"></ion-input>
+    <ion-button type="submit" color="primary" fill="solid" expand="block">
+      Add
+    </ion-button>
+  </form>
 </ion-content>

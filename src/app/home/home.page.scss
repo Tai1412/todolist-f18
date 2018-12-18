@@ -2,6 +2,28 @@ $item-padding: 1em;
 ion-img.logo{
   max-width: 40px;
 }
+ion-toolbar{
+  color:#FFFFFF;//text change color
+  --background:#FF8040;
+}
+ion-header.ion-title{
+  align-items: center;
+}
+ion-content{
+  --background:#FFEBE8;
+}
+ion-fab-button{
+  --background:#8080FF;
+}
+ion-icon{
+  color:#0000FF;
+}
+ion-checkbox{
+  --checkmark-color:green;
+  --background-checked:white;
+  --border-color-checked:green;
+  --border-width:3px;
+}
 ion-item.task{
   --background:lightyellow;
   --inner-padding-start: $item-padding;
@@ -9,11 +31,13 @@ ion-item.task{
   --inner-padding-top: $item-padding;
   --inner-padding-bottom: $item-padding;
 }
-ion-row.done{
+ion-item-sliding.done{
   --background:aliceblue;
   opacity: 0.5;
-  h2.name{
-    text-decoration: line-through;
+  ion-label{
+    h2{
+      text-decoration: line-through;
+    }
   }
 }
 ion-item h2.name{
