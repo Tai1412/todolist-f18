@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title slot="primary">{{title}}</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -18,11 +18,11 @@
 
     <ion-item-sliding *ngFor="let task of tasks" (click)="changeStatus(task.date)" [class.done]="task.status">
       <ion-item>
+        <ion-checkbox *ngIf="task.status" checked slot="end"></ion-checkbox>
         <ion-label>
           <h2>{{task.name}}</h2>
           <p>{{formatDate(task.date)}}</p>
         </ion-label>
-        <ion-checkbox slot="end" [checked]="task.status"></ion-checkbox>
       </ion-item>
       <ion-item-options side="end">
         <ion-item-option color="danger" (click)="deleteItem(task.date)">Delete</ion-item-option>
