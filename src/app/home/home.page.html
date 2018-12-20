@@ -5,20 +5,15 @@
 </ion-header>
 
 <ion-content padding>
-  <form id="task-form" (submit)="addTask()" (keyup.enter)="addTask()">
-    <ion-input type="text" placeholder="add a task" [(ngModel)]="taskInput" name="task-input"></ion-input>
-    <ion-button type="submit" color="primary" fill="solid" expand="block">
-      Add
-    </ion-button>
-  </form>
   <ion-list>
-    <ion-item *ngIf="!tasks.length">
+    <ion-item *ngIf=" !tasks.length">
       No task
     </ion-item>
 
     <ion-item-sliding *ngFor="let task of tasks" (click)="changeStatus(task.date)" [class.done]="task.status">
       <ion-item>
-        <ion-checkbox *ngIf="task.status" checked slot="end"></ion-checkbox>
+        <ion-checkbox *ngIf="task.status; else conditionFalse" checked slot="end"></ion-checkbox>
+        <ng-template #conditionFalse><ion-checkbox slot="end"></ion-checkbox></ng-template>
         <ion-label>
           <h2>{{task.name}}</h2>
           <p>{{formatDate(task.date)}}</p>
@@ -40,7 +35,7 @@
     </ion-item> -->
   </ion-list>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-   <ion-fab-button href="/tabs/(list:list)" >
+   <ion-fab-button href="/tabs/(list:list)" routerDirection="forward" >
      <ion-icon name="add"></ion-icon>
    </ion-fab-button>
  </ion-fab>

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { DataService } from '../data.service';
 import { Task } from '../../models/task';
-import { ToastController } from '@ionic/angular';
 // import { FormBuilder, FormGroup, Validators,FormsModule } from '@angular/forms';
 
 @Component({
@@ -18,34 +17,11 @@ export class HomePage {
   now:number;
   constructor(
     public dataService:DataService,
-    private toaster:ToastController,
   ){
     this.readTasks();
     this.now = new Date().getTime();
     this.sortItems();
   }
-  //create a new task object
-  createTask(taskName:string){
-    let taskDate:number = new Date().getTime();
-    let task = {name: taskName, date: taskDate, status: false };
-    return task;
-  }
-  //add a new task to list
-  addTask(){
-    if( this.taskInput.length > 0 ){
-      this.tasks.push( this.createTask( this.taskInput ) );
-      this.taskInput = '';
-      this.sortItems();
-      this.dataService.storeList(this.tasks)
-      .then( ( response ) => {
-        this.showToast('item saved successfully');
-      })
-      .catch( (error) => {
-        console.log( error );
-      });
-    }
-  }
-
   //load tasks from storage
   readTasks(){
     this.dataService.loadList()
@@ -135,14 +111,5 @@ export class HomePage {
       });
     }, 1000);
 
-  }
-
-  async showToast(message:string){
-    const toast = await this.toaster.create({
-      message: message,
-      position: 'bottom',
-      duration:1000
-    });
-    toast.present();
   }
 }
