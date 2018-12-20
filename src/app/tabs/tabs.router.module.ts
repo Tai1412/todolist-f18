@@ -34,7 +34,7 @@ const routes: Routes = [
       },
       {
         path: 'list',
-        outlet: 'list',
+        outlet: 'home',
         component: ListPage
       }
     ]
