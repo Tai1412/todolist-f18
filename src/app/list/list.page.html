@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-       <ion-back-button text="" defaultHref="/tabs/(home:home)"></ion-back-button>
+    <ion-buttons slot="end">
+       <ion-back-button text ="" icon="close" defaultHref="/tabs/(home:home)"></ion-back-button>
     </ion-buttons>
     <ion-title>{{title}}</ion-title>
   </ion-toolbar>
@@ -9,9 +9,9 @@
 
 <ion-content padding>
   <form id="task-form" (submit)="addTask()" (keyup.enter)="addTask()">
-    <ion-input type="text" placeholder="add a task" [(ngModel)]="taskInput" name="task-input"></ion-input>
-    <ion-button type="submit" color="primary" fill="solid" expand="block">
-      Add
+    <ion-input type="text" placeholder="add a task" [(ngModel)]="taskInput" name="task-input" clearInput></ion-input>
+    <ion-button type="submit" color="success" fill="solid" expand="block">
+      SAVE
     </ion-button>
   </form>
 </ion-content>
